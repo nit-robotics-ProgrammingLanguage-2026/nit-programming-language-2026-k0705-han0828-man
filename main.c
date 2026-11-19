@@ -1,33 +1,42 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
-int g_m = 9966990;
-int g_x = 0;
-int g_ans = 0;
-
-void calc_gcd(void)
+// 最大公约数を求める関数
+int gcd(int m, int x)
 {
-    int r;
-    int a = g_m;
-    int b = g_x;
-    for (; b != 0;)
-    {
-        r = a % b;
-        a = b;
-        b = r;
-    }
-    g_ans = abs(a);
+ int r;
+
+ m = abs(m);
+ x = abs(x);
+
+ while (x != 0)
+ {
+ r = m % x;
+ m = x;
+ x = r;
+ }
+
+ return m;
 }
 
 int main(void)
 {
-    scanf("%d", &g_x);
-    if (g_x > g_m)
-    {
-        printf("NG");
-        return 0;
-    }
-    calc_gcd();
-    printf("%d", g_ans);
-    return 0;
+ int input_number;
+ int result;
+ int limit = 9966990;
+
+ scanf("%d", &input_number);
+
+ if (input_number > limit)
+ {
+ printf("NG");
+ return 0;
+ }
+
+ result = gcd(limit, input_number);
+
+ printf("%d", result);
+
+ return 0;
 }
